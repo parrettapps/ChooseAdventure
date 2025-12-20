@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div id="story-container">
+            <!-- Story content will be dynamically loaded here -->
+        </div>
+    </div>
+    <script>
+        // Set theme before scripts load
+        window.themeInitialized = true;
+        window.currentTheme = 'starwars';
+    </script>
+    <script src="stories.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Load story for this specific theme
+        function initStory() {
+            document.body.className = 'star-wars';
+            if (typeof router !== 'undefined' && typeof stories !== 'undefined' && stories.starwars) {
+                router.loadStory('starwars', 'start');
+            } else {
+                // Wait a bit longer if scripts aren't ready
+                setTimeout(initStory, 50);
+            }
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initStory);
+        } else {
+            initStory();
+        }
+    </script>
+</body>
+</html>
+
