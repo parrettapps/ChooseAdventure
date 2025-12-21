@@ -582,226 +582,193 @@ const stories = {
         }
     },
     
-    minecraft: {
+    pokemon: {
         nodes: {
             start: {
-                title: "A New World Awaits",
-                text: "You wake up in a blocky world, surrounded by trees, grass, and endless possibilities. The sun is rising, and you know this is the start of an incredible adventure. You have three basic tools in your inventory: a wooden pickaxe, a wooden sword, and some seeds. What will you do first?",
-                image: "images/minecraft/start.png",
+                title: "Your Pokemon Journey Begins!",
+                text: "You wake up excited - today is the day you become a Pokemon Trainer! Professor Oak is waiting at his lab with three starter Pokemon for you to choose from. You rush downstairs, grab your bag, and head out into Pallet Town. The world of Pokemon awaits!",
+                image: "images/pokemon/start.png",
                 decisions: [
-                    { text: "Start mining - gather resources underground", nextNode: "mining" },
-                    { text: "Begin building - create your first shelter", nextNode: "building" },
-                    { text: "Explore the surface - see what's out there", nextNode: "exploring" }
+                    { text: "Choose Charmander - the Fire-type Pokemon", nextNode: "charmander" },
+                    { text: "Choose Squirtle - the Water-type Pokemon", nextNode: "squirtle" },
+                    { text: "Choose Bulbasaur - the Grass-type Pokemon", nextNode: "bulbasaur" }
                 ]
             },
-            mining: {
-                title: "Into the Depths",
-                text: "You dig down into the earth and discover a vast cave system! As you mine, you find coal, iron, and even some rare gems. The cave branches into three different directions, each promising different treasures.",
-                image: "images/minecraft/mining.png",
+            charmander: {
+                title: "Charmander, I Choose You!",
+                text: "You pick up Charmander and it immediately warms up to you! Its tail flame burns brightly with excitement. Professor Oak hands you a Pokedex and some Poke Balls. As you leave the lab, you see three different paths ahead.",
+                image: "images/pokemon/charmander.png",
                 decisions: [
-                    { text: "Follow the path with glowing ore - might be diamonds!", nextNode: "diamond-mine" },
-                    { text: "Explore the lava-filled cavern - dangerous but rewarding", nextNode: "lava-cavern" },
-                    { text: "Head toward the sounds of water - could be an underground lake", nextNode: "underground-lake" }
+                    { text: "Head to Viridian Forest - train in the wild", nextNode: "viridian-forest" },
+                    { text: "Challenge the Pewter City Gym first", nextNode: "pewter-gym" },
+                    { text: "Explore Route 1 to catch more Pokemon", nextNode: "route-one" }
                 ]
             },
-            building: {
-                title: "Your First Build",
-                text: "You start building and discover you have a real talent for construction! You create a cozy house, then expand to build a farm, a workshop, and more. As your skills grow, you decide to tackle three ambitious building projects.",
-                image: "images/minecraft/building.png",
+            squirtle: {
+                title: "Squirtle, I Choose You!",
+                text: "Squirtle jumps into your arms and gives you a big smile! It's ready for adventure. Professor Oak gives you a Pokedex and Poke Balls to start your journey. Outside the lab, you see several paths you could take.",
+                image: "images/pokemon/squirtle.png",
                 decisions: [
-                    { text: "Build a massive castle with towers and walls", nextNode: "castle" },
-                    { text: "Create an automated farm with redstone", nextNode: "redstone-farm" },
-                    { text: "Construct a village for other players", nextNode: "village" }
+                    { text: "Head to the nearby lake - Squirtle loves water!", nextNode: "lake-adventure" },
+                    { text: "Visit the Pokemon Center to learn about healing", nextNode: "pokemon-center" },
+                    { text: "Explore Route 1 to catch more Pokemon", nextNode: "route-one" }
                 ]
             },
-            exploring: {
-                title: "Surface Exploration",
-                text: "You set out to explore and discover amazing biomes! You see a dense forest, a desert with temples, and mountains reaching into the clouds. Each biome holds different adventures and resources.",
-                image: "images/minecraft/exploring.png",
+            bulbasaur: {
+                title: "Bulbasaur, I Choose You!",
+                text: "Bulbasaur nuzzles against you happily! The seed on its back seems to glow with energy. Professor Oak provides you with a Pokedex and Poke Balls. You step outside ready for adventure, with multiple paths before you.",
+                image: "images/pokemon/bulbasaur.png",
                 decisions: [
-                    { text: "Explore the dark forest - mysterious and full of secrets", nextNode: "dark-forest" },
-                    { text: "Journey to the desert - ancient temples await", nextNode: "desert-temple" },
-                    { text: "Climb the mountains - the view must be incredible", nextNode: "mountains" }
+                    { text: "Visit the Pokemon Garden - Bulbasaur will love it", nextNode: "pokemon-garden" },
+                    { text: "Head to Viridian Forest - perfect for Grass types", nextNode: "viridian-forest" },
+                    { text: "Explore Route 1 to catch more Pokemon", nextNode: "route-one" }
                 ]
             },
-            "diamond-mine": {
-                title: "The Diamond Mine",
-                text: "You strike diamond! With your new diamond tools, you become incredibly efficient. You mine deeper and discover an ancient stronghold. Inside, you find an End Portal! You're ready for the ultimate adventure...",
-                image: "images/minecraft/diamond-mine.png",
+            "viridian-forest": {
+                title: "Viridian Forest",
+                text: "The forest is full of Bug-type and Grass-type Pokemon! You catch several new friends including a Caterpie and a Pikachu! Your team is growing stronger. Deep in the forest, you discover a hidden clearing with rare Pokemon.",
+                image: "images/pokemon/viridian-forest.png",
                 decisions: [
-                    { text: "Prepare for the End dimension", nextNode: "end-preparation" }
+                    { text: "Try to catch the rare Pokemon", nextNode: "rare-pokemon" },
+                    { text: "Train your team for the next gym", nextNode: "training-montage" }
                 ]
             },
-            "lava-cavern": {
-                title: "The Lava Cavern",
-                text: "You carefully navigate the lava-filled cavern and discover Nether portals! You gather obsidian and build a portal to the Nether dimension. The Nether is dangerous but full of rare materials. Your courage has opened new possibilities!",
-                image: "images/minecraft/lava-cavern.png",
+            "pewter-gym": {
+                title: "Pewter City Gym",
+                text: "You enter the Pewter City Gym and face Brock, the Rock-type specialist! The battle is tough, but your Pokemon fight with all their heart. After an intense match, you emerge victorious with your first Gym Badge!",
+                image: "images/pokemon/pewter-gym.png",
                 decisions: [
-                    { text: "Enter the Nether", nextNode: "nether-adventure" }
+                    { text: "Continue to the next gym", nextNode: "cerulean-gym" },
+                    { text: "Train more before moving on", nextNode: "training-montage" }
                 ]
             },
-            "underground-lake": {
-                title: "The Underground Lake",
-                text: "You find a beautiful underground lake with glowstone lighting it up. You discover an abandoned mineshaft with chests full of treasure! You also find a spawner and decide to build a mob farm. Your exploration has been very rewarding!",
-                image: "images/minecraft/underground-lake.png",
+            "route-one": {
+                title: "Route 1 Adventure",
+                text: "You explore Route 1 and encounter many wild Pokemon! You catch a Pidgey and a Rattata to add to your team. A friendly trainer challenges you to a battle, and you win! Your confidence grows with each victory.",
+                image: "images/pokemon/route-one.png",
                 decisions: [
-                    { text: "Continue your underground adventure", nextNode: "mineshaft-adventure" }
+                    { text: "Continue to Viridian City", nextNode: "viridian-city" },
+                    { text: "Keep training on Route 1", nextNode: "training-montage" }
                 ]
             },
-            castle: {
-                title: "The Grand Castle",
-                text: "You build an incredible castle with multiple towers, a throne room, and defensive walls. Your building skills impress everyone! You decide to expand and create an entire kingdom with villages, farms, and roads connecting everything.",
-                image: "images/minecraft/castle.png",
+            "lake-adventure": {
+                title: "The Pokemon Lake",
+                text: "At the lake, Squirtle dives in and plays happily! You meet other Water-type Pokemon and even catch a Magikarp. A mysterious trainer tells you about a powerful Water Pokemon that lives in a cave nearby...",
+                image: "images/pokemon/lake-adventure.png",
                 decisions: [
-                    { text: "Build your kingdom", nextNode: "kingdom" }
+                    { text: "Investigate the cave", nextNode: "water-cave" },
+                    { text: "Continue your gym challenge", nextNode: "cerulean-gym" }
                 ]
             },
-            "redstone-farm": {
-                title: "The Redstone Farm",
-                text: "You master redstone and create an amazing automated farm! Crops plant and harvest themselves, animals are automatically fed, and everything is perfectly organized. Your engineering skills are incredible!",
-                image: "images/minecraft/redstone-farm.png",
+            "pokemon-center": {
+                title: "The Pokemon Center",
+                text: "Nurse Joy teaches you all about taking care of Pokemon. You learn about healing, status conditions, and the importance of the bond between trainer and Pokemon. She gives you some helpful items for your journey!",
+                image: "images/pokemon/pokemon-center.png",
                 decisions: [
-                    { text: "Expand your redstone creations", nextNode: "redstone-master" }
+                    { text: "Head to your first gym battle", nextNode: "pewter-gym" },
+                    { text: "Explore more of the region", nextNode: "viridian-city" }
                 ]
             },
-            village: {
-                title: "Building a Village",
-                text: "You build a beautiful village and villagers move in! You trade with them, protect them from zombies, and help the village grow. You become the village hero and they offer you special rewards!",
-                image: "images/minecraft/village.png",
+            "pokemon-garden": {
+                title: "The Pokemon Garden",
+                text: "The garden is beautiful and full of Grass and Bug-type Pokemon! Bulbasaur is so happy here. You catch an Oddish and a Bellsprout. The garden keeper tells you about a legendary Pokemon said to live in a secret garden...",
+                image: "images/pokemon/pokemon-garden.png",
                 decisions: [
-                    { text: "See what the villagers have for you", nextNode: "village-hero" }
+                    { text: "Search for the secret garden", nextNode: "secret-garden" },
+                    { text: "Continue your gym challenge", nextNode: "celadon-gym" }
                 ]
             },
-            "dark-forest": {
-                title: "The Dark Forest",
-                text: "You explore the dark forest and discover a woodland mansion! You carefully explore it, fighting off illagers and collecting rare loot. You also find a secret room with amazing treasures. Your bravery has paid off!",
-                image: "images/minecraft/dark-forest.png",
+            "rare-pokemon": {
+                title: "A Rare Discovery!",
+                text: "You find an extremely rare Pokemon in the clearing! After a careful battle, you successfully catch it! This Pokemon will be a powerful addition to your team. Other trainers are amazed at your luck and skill!",
+                image: "images/pokemon/rare-pokemon.png",
                 decisions: [
-                    { text: "Continue your forest adventure", nextNode: "mansion-adventure" }
+                    { text: "Continue your Pokemon journey", nextNode: "pokemon-league-path" }
                 ]
             },
-            "desert-temple": {
-                title: "The Desert Temple",
-                text: "You find a desert temple and carefully disarm the TNT trap! Inside, you discover ancient treasures: gold, emeralds, and enchanted books. You also find a map leading to an even greater treasure...",
-                image: "images/minecraft/desert-temple.png",
+            "training-montage": {
+                title: "Training Time!",
+                text: "You spend time training your Pokemon team. They grow stronger, learn new moves, and evolve! Your bond with your Pokemon deepens. You feel ready to take on any challenge that comes your way!",
+                image: "images/pokemon/training-montage.png",
                 decisions: [
-                    { text: "Follow the treasure map", nextNode: "treasure-hunt" }
+                    { text: "Challenge the Pokemon League", nextNode: "pokemon-league-path" }
                 ]
             },
-            mountains: {
-                title: "The Mountains",
-                text: "You climb to the top of the mountains and the view is breathtaking! You discover an emerald ore vein and build a base at the peak. From here, you can see the entire world. You've found the perfect spot!",
-                image: "images/minecraft/mountains.png",
+            "cerulean-gym": {
+                title: "Cerulean City Gym",
+                text: "You battle Misty, the Water-type Gym Leader! Her Starmie is tough, but your Pokemon pull through. You earn the Cascade Badge! Misty compliments your training style and wishes you luck on your journey.",
+                image: "images/pokemon/cerulean-gym.png",
                 decisions: [
-                    { text: "Build your mountain base", nextNode: "mountain-base" }
+                    { text: "Continue collecting badges", nextNode: "pokemon-league-path" }
                 ]
             },
-            "end-preparation": {
-                title: "Preparing for the End",
-                text: "You gather all the resources you need: Ender Pearls, Blaze Powder, and the best armor and weapons. You activate the End Portal and step through. You're ready to face the Ender Dragon!",
-                image: "images/minecraft/end-preparation.png",
+            "viridian-city": {
+                title: "Viridian City",
+                text: "You arrive in Viridian City and explore. You visit the Pokemon Mart, stock up on supplies, and meet other trainers. You hear rumors about a powerful Gym Leader here, but the gym seems to be closed for now...",
+                image: "images/pokemon/viridian-city.png",
                 decisions: [
-                    { text: "Battle the Ender Dragon", nextNode: "ender-dragon" }
+                    { text: "Head to the next city", nextNode: "pewter-gym" },
+                    { text: "Train in the nearby areas", nextNode: "training-montage" }
                 ]
             },
-            "nether-adventure": {
-                title: "Nether Adventure",
-                text: "You explore the Nether, gathering rare materials like Netherite, Blaze Rods, and Ghast Tears. You build a Nether highway and discover a Nether Fortress. Your adventures in the Nether have made you incredibly powerful!",
-                image: "images/minecraft/nether-adventure.png",
+            "water-cave": {
+                title: "The Water Cave",
+                text: "Deep in the cave, you discover amazing Water-type Pokemon! You even encounter a powerful legendary Pokemon. Though you can't catch it yet, it seems to acknowledge your potential as a trainer. You feel inspired!",
+                image: "images/pokemon/water-cave.png",
                 decisions: [
-                    { text: "Continue your Nether journey", nextNode: "nether-master" }
+                    { text: "Continue your journey with renewed determination", nextNode: "pokemon-league-path" }
                 ]
             },
-            "mineshaft-adventure": {
-                title: "Mineshaft Exploration",
-                text: "You explore the mineshaft thoroughly, finding rare ores and building an efficient mob farm. Your resource gathering skills are unmatched. You've become a master miner and explorer!",
-                image: "images/minecraft/mineshaft-adventure.png",
+            "secret-garden": {
+                title: "The Secret Garden",
+                text: "You discover the secret garden! It's full of rare Grass-type Pokemon and beautiful flowers. You catch some amazing Pokemon and learn about the harmony between Pokemon and nature. This experience will stay with you forever!",
+                image: "images/pokemon/secret-garden.png",
                 decisions: [
-                    { text: "See where your mastery leads", nextNode: "master-miner" }
+                    { text: "Continue your Pokemon adventure", nextNode: "pokemon-league-path" }
                 ]
             },
-            kingdom: {
-                title: "Your Kingdom",
-                text: "You've built an entire kingdom! Villagers live in your cities, farms produce food, and your kingdom thrives. You're the ruler of a blocky empire! Your leadership and building skills have created something amazing.",
-                image: "images/minecraft/kingdom.png",
+            "celadon-gym": {
+                title: "Celadon City Gym",
+                text: "You challenge Erika, the Grass-type Gym Leader! The battle is beautiful and intense. Your Pokemon work together perfectly, and you win the Rainbow Badge! Erika is impressed by your connection with your Pokemon.",
+                image: "images/pokemon/celadon-gym.png",
                 decisions: [
-                    { text: "See what your kingdom has earned you", nextNode: "gift-reveal" }
+                    { text: "Keep collecting badges", nextNode: "pokemon-league-path" }
                 ]
             },
-            "redstone-master": {
-                title: "Redstone Master",
-                text: "You've become a redstone master! You've built complex machines, automated systems, and incredible contraptions. Your engineering skills are legendary in the Minecraft world. You've created something truly special!",
-                image: "images/minecraft/redstone-master.png",
+            "pokemon-league-path": {
+                title: "The Road to Victory",
+                text: "You've collected all eight Gym Badges and trained your Pokemon to be the best they can be! Victory Road awaits, and beyond it, the Pokemon League. You're about to face the Elite Four and the Champion!",
+                image: "images/pokemon/pokemon-league-path.png",
                 decisions: [
-                    { text: "Discover your reward", nextNode: "gift-reveal" }
+                    { text: "Challenge the Elite Four", nextNode: "elite-four" }
                 ]
             },
-            "village-hero": {
-                title: "Village Hero",
-                text: "The villagers are so grateful for your help! They've prepared a special celebration in your honor. You've protected them, helped them grow, and become their hero. Your kindness and bravery have earned you something wonderful!",
-                image: "images/minecraft/village-hero.png",
+            "elite-four": {
+                title: "The Elite Four!",
+                text: "You battle through the Elite Four one by one! Each battle is more intense than the last. Your Pokemon give everything they have, and together you overcome every challenge. Finally, you face the Champion...",
+                image: "images/pokemon/elite-four.png",
                 decisions: [
-                    { text: "See your reward", nextNode: "gift-reveal" }
+                    { text: "Battle the Champion", nextNode: "champion-battle" }
                 ]
             },
-            "mansion-adventure": {
-                title: "Mansion Conqueror",
-                text: "You've cleared the woodland mansion and claimed it as your own! You've defeated all the illagers and collected amazing loot. Your bravery and combat skills have made you a legend. Heroes deserve rewards!",
-                image: "images/minecraft/mansion-adventure.png",
+            "champion-battle": {
+                title: "Pokemon Champion!",
+                text: "In an epic final battle, you defeat the Champion! Your Pokemon celebrate with you as you're crowned the new Pokemon Champion! Professor Oak arrives to congratulate you. Your Pokemon journey has been incredible, and now you've achieved your dream!",
+                image: "images/pokemon/champion-battle.png",
                 decisions: [
-                    { text: "Claim your reward", nextNode: "gift-reveal" }
-                ]
-            },
-            "treasure-hunt": {
-                title: "The Treasure Hunt",
-                text: "You follow the treasure map and discover an ocean monument! You dive deep, defeat the guardians, and claim the treasure. You've become an expert treasure hunter and explorer. Your adventures have led to something amazing!",
-                image: "images/minecraft/treasure-hunt.png",
-                decisions: [
-                    { text: "Discover your reward", nextNode: "gift-reveal" }
-                ]
-            },
-            "mountain-base": {
-                title: "Mountain Base",
-                text: "Your mountain base is incredible! You've built a fortress in the clouds with the best view in the world. You've mined rare ores and created an amazing home. Your building and exploration skills have earned you something special!",
-                image: "images/minecraft/mountain-base.png",
-                decisions: [
-                    { text: "Get your reward", nextNode: "gift-reveal" }
-                ]
-            },
-            "ender-dragon": {
-                title: "Dragon Slayer",
-                text: "You've defeated the Ender Dragon! The ultimate boss of Minecraft has fallen to your skill and determination. You've completed the game's greatest challenge. Your achievement deserves an incredible reward!",
-                image: "images/minecraft/ender-dragon.png",
-                decisions: [
-                    { text: "Receive your reward", nextNode: "gift-reveal" }
-                ]
-            },
-            "nether-master": {
-                title: "Nether Master",
-                text: "You've mastered the Nether! You've gathered Netherite, built highways, and conquered the dangerous dimension. Your courage and skill have made you a Nether expert. You've earned something amazing!",
-                image: "images/minecraft/nether-master.png",
-                decisions: [
-                    { text: "See your reward", nextNode: "gift-reveal" }
-                ]
-            },
-            "master-miner": {
-                title: "Master Miner",
-                text: "You've become the ultimate miner! You've found every ore, explored every cave, and built the most efficient mining operations. Your dedication to mining has made you incredibly wealthy and skilled. You've earned something wonderful!",
-                image: "images/minecraft/master-miner.png",
-                decisions: [
-                    { text: "Discover your reward", nextNode: "gift-reveal" }
+                    { text: "Receive your Champion's reward", nextNode: "gift-reveal" }
                 ]
             },
             "gift-reveal": {
                 type: "gift-reveal",
-                title: "Your Blocky Reward",
-                text: "Your incredible adventure in the blocky world has been amazing! You've built, explored, mined, and conquered. You've shown creativity, courage, and skill. Now, you must choose your ultimate reward - a pass to an amazing place where adventures never end!",
-                image: "images/minecraft/gift-reveal.png"
+                title: "A Champion's Reward!",
+                text: "Congratulations, Pokemon Champion! Your incredible journey through the Pokemon world has been amazing! You've caught Pokemon, won badges, defeated the Elite Four, and become Champion! Now, you must choose your ultimate reward - a pass to an amazing place where adventures never end!",
+                image: "images/pokemon/gift-reveal.png"
             },
             "final-gift": {
                 type: "final-gift",
-                title: "Your Minecraft Reward",
-                text: "Keep crafting and building! Your adventure continues!"
+                title: "Your Pokemon Reward",
+                text: "Gotta catch 'em all! Your adventure continues!"
             }
         }
     }
