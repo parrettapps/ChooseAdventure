@@ -586,183 +586,271 @@ const stories = {
         nodes: {
             start: {
                 title: "Your Pokemon Journey Begins!",
-                text: "You wake up excited - today is the day you become a Pokemon Trainer! Professor Oak is waiting at his lab with three starter Pokemon for you to choose from. You rush downstairs, grab your bag, and head out into Pallet Town. The world of Pokemon awaits!",
+                text: "You wake up on your 10th birthday - today is the day you become a Pokemon Trainer! You rush to Professor Oak's lab, heart pounding with excitement. But when you arrive, Professor Oak has a special surprise. 'I've been saving a very special Pokemon just for you,' he says with a smile, handing you a Poke Ball containing... an Eevee! The fluffy brown Pokemon jumps into your arms and nuzzles your face. You and Eevee are going to be the best of friends!",
                 image: "images/pokemon/start.png",
                 decisions: [
-                    { text: "Choose Charmander - the Fire-type Pokemon", nextNode: "charmander" },
-                    { text: "Choose Squirtle - the Water-type Pokemon", nextNode: "squirtle" },
-                    { text: "Choose Bulbasaur - the Grass-type Pokemon", nextNode: "bulbasaur" }
+                    { text: "Head to the forest - you heard there are cool Pokemon there!", nextNode: "forest-path" },
+                    { text: "Go to the beach - maybe you'll find Water-type Pokemon!", nextNode: "beach-path" },
+                    { text: "Climb the mountain trail - adventure awaits up high!", nextNode: "mountain-path" }
                 ]
             },
-            charmander: {
-                title: "Charmander, I Choose You!",
-                text: "You pick up Charmander and it immediately warms up to you! Its tail flame burns brightly with excitement. Professor Oak hands you a Pokedex and some Poke Balls. As you leave the lab, you see three different paths ahead.",
-                image: "images/pokemon/charmander.png",
+            "forest-path": {
+                title: "Viridian Forest Adventure",
+                text: "You and Eevee enter the lush Viridian Forest! Sunlight filters through the leaves as Bug and Grass-type Pokemon scurry about. Eevee's ears perk up - it senses Pokemon nearby! You spot a Caterpie, a Butterfree flying overhead, and hear a familiar 'Pika pika!' in the distance.",
+                image: "images/pokemon/forest-path.png",
                 decisions: [
-                    { text: "Head to Viridian Forest - train in the wild", nextNode: "viridian-forest" },
-                    { text: "Challenge the Pewter City Gym first", nextNode: "pewter-gym" },
-                    { text: "Explore Route 1 to catch more Pokemon", nextNode: "route-one" }
+                    { text: "Follow the Pikachu sounds deeper into the forest", nextNode: "pikachu-chase" },
+                    { text: "Explore the Pokemon training grounds you see ahead", nextNode: "forest-training" },
+                    { text: "Investigate the mysterious glowing flowers", nextNode: "forest-mystery" }
                 ]
             },
-            squirtle: {
-                title: "Squirtle, I Choose You!",
-                text: "Squirtle jumps into your arms and gives you a big smile! It's ready for adventure. Professor Oak gives you a Pokedex and Poke Balls to start your journey. Outside the lab, you see several paths you could take.",
-                image: "images/pokemon/squirtle.png",
+            "beach-path": {
+                title: "Cerulean Beach",
+                text: "You and Eevee arrive at the beautiful Cerulean Beach! The sand is warm and the waves sparkle in the sunlight. Eevee playfully chases the waves. You see Water-type Pokemon swimming nearby - and is that a Squirtle playing in the surf? There's also a Pokemon trainer having a picnic and a mysterious cave in the cliffs.",
+                image: "images/pokemon/beach-path.png",
                 decisions: [
-                    { text: "Head to the nearby lake - Squirtle loves water!", nextNode: "lake-adventure" },
-                    { text: "Visit the Pokemon Center to learn about healing", nextNode: "pokemon-center" },
-                    { text: "Explore Route 1 to catch more Pokemon", nextNode: "route-one" }
+                    { text: "Try to befriend the playful Squirtle", nextNode: "squirtle-friend" },
+                    { text: "Talk to the trainer having a picnic", nextNode: "beach-trainer" },
+                    { text: "Explore the seaside cave", nextNode: "sea-cave" }
                 ]
             },
-            bulbasaur: {
-                title: "Bulbasaur, I Choose You!",
-                text: "Bulbasaur nuzzles against you happily! The seed on its back seems to glow with energy. Professor Oak provides you with a Pokedex and Poke Balls. You step outside ready for adventure, with multiple paths before you.",
-                image: "images/pokemon/bulbasaur.png",
+            "mountain-path": {
+                title: "Mt. Moon Trail",
+                text: "You and Eevee begin climbing the famous Mt. Moon! The air is crisp and cool, and you can see for miles. Eevee seems energized by the altitude! You spot some Geodude rolling down the path, a Clefairy dancing on a rock, and smoke rising from what looks like a Charmander's tail flame.",
+                image: "images/pokemon/mountain-path.png",
                 decisions: [
-                    { text: "Visit the Pokemon Garden - Bulbasaur will love it", nextNode: "pokemon-garden" },
-                    { text: "Head to Viridian Forest - perfect for Grass types", nextNode: "viridian-forest" },
-                    { text: "Explore Route 1 to catch more Pokemon", nextNode: "route-one" }
+                    { text: "Follow the Clefairy to see where it's going", nextNode: "clefairy-dance" },
+                    { text: "Approach the Charmander - it might need help", nextNode: "charmander-rescue" },
+                    { text: "Explore the cave entrance you spotted", nextNode: "moon-cave" }
                 ]
             },
-            "viridian-forest": {
-                title: "Viridian Forest",
-                text: "The forest is full of Bug-type and Grass-type Pokemon! You catch several new friends including a Caterpie and a Pikachu! Your team is growing stronger. Deep in the forest, you discover a hidden clearing with rare Pokemon.",
-                image: "images/pokemon/viridian-forest.png",
+            "pikachu-chase": {
+                title: "Meeting Pikachu!",
+                text: "You follow the sounds and find an adorable Pikachu! But it's being cornered by a group of angry Spearow! Without hesitating, you and Eevee jump in to help. Eevee uses Quick Attack and you throw a stick to distract the Spearow. They fly away, and the grateful Pikachu decides to join your team!",
+                image: "images/pokemon/pikachu-chase.png",
                 decisions: [
-                    { text: "Try to catch the rare Pokemon", nextNode: "rare-pokemon" },
-                    { text: "Train your team for the next gym", nextNode: "training-montage" }
+                    { text: "Train with your new team in the forest", nextNode: "forest-team-training" },
+                    { text: "Head to the nearest Pokemon Gym", nextNode: "first-gym" }
                 ]
             },
-            "pewter-gym": {
-                title: "Pewter City Gym",
-                text: "You enter the Pewter City Gym and face Brock, the Rock-type specialist! The battle is tough, but your Pokemon fight with all their heart. After an intense match, you emerge victorious with your first Gym Badge!",
-                image: "images/pokemon/pewter-gym.png",
+            "forest-training": {
+                title: "Forest Training Grounds",
+                text: "You discover a secret training area where other young trainers practice! A friendly trainer named Ethan challenges you to a battle. Eevee fights bravely and wins! Ethan is impressed and gives you tips on how to help Eevee evolve. 'Your bond with Eevee is really special,' he says.",
+                image: "images/pokemon/forest-training.png",
                 decisions: [
-                    { text: "Continue to the next gym", nextNode: "cerulean-gym" },
-                    { text: "Train more before moving on", nextNode: "training-montage" }
+                    { text: "Keep training with the other trainers", nextNode: "training-camp" },
+                    { text: "Head to challenge your first gym", nextNode: "first-gym" }
                 ]
             },
-            "route-one": {
-                title: "Route 1 Adventure",
-                text: "You explore Route 1 and encounter many wild Pokemon! You catch a Pidgey and a Rattata to add to your team. A friendly trainer challenges you to a battle, and you win! Your confidence grows with each victory.",
-                image: "images/pokemon/route-one.png",
+            "forest-mystery": {
+                title: "The Glowing Flowers",
+                text: "The mysterious flowers lead you to a hidden grove where a beautiful Celebi appears! The legendary Pokemon seems to recognize something special in you and Eevee. It sprinkles magical dust on Eevee, making it glow briefly. Eevee has learned a special move! Celebi vanishes, but you'll never forget this moment.",
+                image: "images/pokemon/forest-mystery.png",
                 decisions: [
-                    { text: "Continue to Viridian City", nextNode: "viridian-city" },
-                    { text: "Keep training on Route 1", nextNode: "training-montage" }
+                    { text: "Continue your adventure with renewed wonder", nextNode: "legendary-blessing" }
                 ]
             },
-            "lake-adventure": {
-                title: "The Pokemon Lake",
-                text: "At the lake, Squirtle dives in and plays happily! You meet other Water-type Pokemon and even catch a Magikarp. A mysterious trainer tells you about a powerful Water Pokemon that lives in a cave nearby...",
-                image: "images/pokemon/lake-adventure.png",
+            "squirtle-friend": {
+                title: "A New Friend - Squirtle!",
+                text: "You approach the Squirtle carefully. It's shy at first, but Eevee runs up playfully and they start chasing each other! The Squirtle seems lonely - it was separated from its trainer. You promise to help find its home, but in the meantime, Squirtle joins your adventure! Now you have two amazing Pokemon friends!",
+                image: "images/pokemon/squirtle-friend.png",
                 decisions: [
-                    { text: "Investigate the cave", nextNode: "water-cave" },
-                    { text: "Continue your gym challenge", nextNode: "cerulean-gym" }
+                    { text: "Train together at the beach", nextNode: "beach-training" },
+                    { text: "Head to the Pokemon Center to register your team", nextNode: "pokemon-center" }
+                ]
+            },
+            "beach-trainer": {
+                title: "Meeting Misty",
+                text: "The trainer is Misty, the famous Water-type Gym Leader! She's taking a day off. She notices your Eevee and smiles. 'That's a wonderful Pokemon! Would you like a friendly battle?' You accept, and even though her Staryu is tough, Eevee fights with all its heart. Misty is impressed by your bond and invites you to challenge her gym soon!",
+                image: "images/pokemon/beach-trainer.png",
+                decisions: [
+                    { text: "Accept her invitation to battle at the gym", nextNode: "water-gym" },
+                    { text: "Keep exploring the beach first", nextNode: "beach-exploration" }
+                ]
+            },
+            "sea-cave": {
+                title: "The Seafoam Cave",
+                text: "Inside the cave, you find incredible ice formations and Water-type Pokemon! Eevee shivers a bit, so you share your jacket. Deep inside, you discover a hidden pool where a majestic Lapras is resting. It looks at you kindly and offers to give you and Eevee a ride across the underground lake!",
+                image: "images/pokemon/sea-cave.png",
+                decisions: [
+                    { text: "Ride Lapras to explore the hidden areas", nextNode: "lapras-adventure" }
+                ]
+            },
+            "clefairy-dance": {
+                title: "The Clefairy Moon Dance",
+                text: "You follow the Clefairy to a magical clearing where dozens of Clefairy are dancing under the moonlight! Eevee joins in, dancing adorably. A large Moon Stone in the center glows brightly. The Clefairy seem to be offering you a piece of it - a gift that could help Eevee evolve someday!",
+                image: "images/pokemon/clefairy-dance.png",
+                decisions: [
+                    { text: "Accept the Moon Stone gift", nextNode: "moon-stone-gift" },
+                    { text: "Thank them and continue exploring", nextNode: "mountain-exploration" }
+                ]
+            },
+            "charmander-rescue": {
+                title: "Rescuing Charmander",
+                text: "The Charmander was abandoned by a cruel trainer and left on the mountain! You can see it's been waiting here, hoping its trainer would return. You gently approach with Eevee, offering food and kindness. The Charmander is hesitant at first, but Eevee's friendly nature wins it over. Charmander decides to trust you and joins your team!",
+                image: "images/pokemon/charmander-rescue.png",
+                decisions: [
+                    { text: "Train your new team on the mountain", nextNode: "mountain-training" },
+                    { text: "Take Charmander to get healed first", nextNode: "pokemon-center" }
+                ]
+            },
+            "moon-cave": {
+                title: "Inside Mt. Moon",
+                text: "The cave is full of Zubat, Geodude, and beautiful crystals! Eevee's fur glows softly in the crystal light. Deep inside, you find a fossil - and a scientist who offers to revive it into a real Pokemon for you! You also spot some suspicious characters in the shadows... Team Rocket!",
+                image: "images/pokemon/moon-cave.png",
+                decisions: [
+                    { text: "Confront Team Rocket with Eevee!", nextNode: "team-rocket-battle" },
+                    { text: "Sneak past and get help from the scientist", nextNode: "fossil-revival" }
+                ]
+            },
+            "forest-team-training": {
+                title: "Training with Pikachu and Eevee",
+                text: "You train hard with Pikachu and Eevee! They become best friends, often playing together between training sessions. Your Pokemon learn new moves and grow stronger. Other trainers notice how well your Pokemon work together. You're becoming a skilled trainer!",
+                image: "images/pokemon/forest-team-training.png",
+                decisions: [
+                    { text: "Challenge the Pokemon League", nextNode: "gym-challenge" }
+                ]
+            },
+            "first-gym": {
+                title: "Your First Gym Battle!",
+                text: "You enter the Pewter City Gym to face Brock! His Rock-type Pokemon are tough, but Eevee doesn't give up. With clever moves and your encouragement, Eevee finds a way to win! Brock awards you the Boulder Badge. 'You and your Eevee have a special bond,' he says. 'You'll go far!'",
+                image: "images/pokemon/first-gym.png",
+                decisions: [
+                    { text: "Continue your gym challenge journey", nextNode: "gym-challenge" }
+                ]
+            },
+            "training-camp": {
+                title: "The Pokemon Training Camp",
+                text: "You spend time at the training camp, and Eevee grows incredibly strong! You meet trainers from all over and learn new strategies. One trainer has an Umbreon - an evolved form of Eevee! It inspires you to keep training and growing with your Pokemon partner.",
+                image: "images/pokemon/training-camp.png",
+                decisions: [
+                    { text: "Head out to collect gym badges", nextNode: "gym-challenge" }
+                ]
+            },
+            "legendary-blessing": {
+                title: "Blessed by Celebi",
+                text: "With Celebi's blessing, you and Eevee feel unstoppable! You travel across the region, catching Pokemon and making friends everywhere you go. Eevee seems to glow with a special energy. Trainers you meet comment on how amazing your bond is. You're ready for the ultimate challenge!",
+                image: "images/pokemon/legendary-blessing.png",
+                decisions: [
+                    { text: "Challenge the Pokemon League", nextNode: "pokemon-league" }
+                ]
+            },
+            "beach-training": {
+                title: "Beach Training Session",
+                text: "You train Eevee and Squirtle on the beach! Squirtle teaches Eevee to swim, and they have races in the shallow water. Both Pokemon grow stronger and become close friends. A crowd gathers to watch your training - you're becoming famous for your talented team!",
+                image: "images/pokemon/beach-training.png",
+                decisions: [
+                    { text: "Take on the gym challenge", nextNode: "gym-challenge" }
                 ]
             },
             "pokemon-center": {
                 title: "The Pokemon Center",
-                text: "Nurse Joy teaches you all about taking care of Pokemon. You learn about healing, status conditions, and the importance of the bond between trainer and Pokemon. She gives you some helpful items for your journey!",
+                text: "Nurse Joy heals your Pokemon and is amazed by how happy and healthy they are! 'You take wonderful care of your Pokemon,' she says. She gives you a special Potion as a gift. Eevee looks refreshed and ready for more adventures!",
                 image: "images/pokemon/pokemon-center.png",
                 decisions: [
-                    { text: "Head to your first gym battle", nextNode: "pewter-gym" },
-                    { text: "Explore more of the region", nextNode: "viridian-city" }
+                    { text: "Continue your Pokemon journey", nextNode: "gym-challenge" }
                 ]
             },
-            "pokemon-garden": {
-                title: "The Pokemon Garden",
-                text: "The garden is beautiful and full of Grass and Bug-type Pokemon! Bulbasaur is so happy here. You catch an Oddish and a Bellsprout. The garden keeper tells you about a legendary Pokemon said to live in a secret garden...",
-                image: "images/pokemon/pokemon-garden.png",
+            "water-gym": {
+                title: "Cerulean Gym Battle!",
+                text: "You challenge Misty at her gym! The water arena is impressive, with platforms floating on a huge pool. Eevee is nervous about the water, but you encourage it. Together, you develop a strategy using Eevee's speed and agility. After an exciting battle, you win the Cascade Badge!",
+                image: "images/pokemon/water-gym.png",
                 decisions: [
-                    { text: "Search for the secret garden", nextNode: "secret-garden" },
-                    { text: "Continue your gym challenge", nextNode: "celadon-gym" }
+                    { text: "Keep collecting badges", nextNode: "gym-challenge" }
                 ]
             },
-            "rare-pokemon": {
-                title: "A Rare Discovery!",
-                text: "You find an extremely rare Pokemon in the clearing! After a careful battle, you successfully catch it! This Pokemon will be a powerful addition to your team. Other trainers are amazed at your luck and skill!",
-                image: "images/pokemon/rare-pokemon.png",
+            "beach-exploration": {
+                title: "Beach Discoveries",
+                text: "Exploring the beach, you and Eevee find a hidden tide pool full of Staryu and Shellder! You also discover a beautiful pearl that you keep as a good luck charm. Eevee finds a playful Psyduck who follows you around. Your adventure is full of wonderful discoveries!",
+                image: "images/pokemon/beach-exploration.png",
                 decisions: [
-                    { text: "Continue your Pokemon journey", nextNode: "pokemon-league-path" }
+                    { text: "Head to the Pokemon League", nextNode: "pokemon-league" }
                 ]
             },
-            "training-montage": {
-                title: "Training Time!",
-                text: "You spend time training your Pokemon team. They grow stronger, learn new moves, and evolve! Your bond with your Pokemon deepens. You feel ready to take on any challenge that comes your way!",
-                image: "images/pokemon/training-montage.png",
+            "lapras-adventure": {
+                title: "Adventure with Lapras",
+                text: "Lapras takes you through underground caverns filled with glowing crystals and rare Water Pokemon! Eevee rides on your lap, watching in amazement. You emerge on a secret beach where Lapras's family lives. They welcome you with joy. Lapras decides to join your team for more adventures!",
+                image: "images/pokemon/lapras-adventure.png",
                 decisions: [
-                    { text: "Challenge the Pokemon League", nextNode: "pokemon-league-path" }
+                    { text: "Journey to the Pokemon League", nextNode: "pokemon-league" }
                 ]
             },
-            "cerulean-gym": {
-                title: "Cerulean City Gym",
-                text: "You battle Misty, the Water-type Gym Leader! Her Starmie is tough, but your Pokemon pull through. You earn the Cascade Badge! Misty compliments your training style and wishes you luck on your journey.",
-                image: "images/pokemon/cerulean-gym.png",
+            "moon-stone-gift": {
+                title: "The Moon Stone Gift",
+                text: "You accept the Moon Stone, and the Clefairy cheer! You carefully put it in your bag. Eevee sniffs it curiously. This magical stone could help Eevee evolve into something amazing someday! The Clefairy wave goodbye as you continue your journey, feeling blessed.",
+                image: "images/pokemon/moon-stone-gift.png",
                 decisions: [
-                    { text: "Continue collecting badges", nextNode: "pokemon-league-path" }
+                    { text: "Continue to the Pokemon League", nextNode: "pokemon-league" }
                 ]
             },
-            "viridian-city": {
-                title: "Viridian City",
-                text: "You arrive in Viridian City and explore. You visit the Pokemon Mart, stock up on supplies, and meet other trainers. You hear rumors about a powerful Gym Leader here, but the gym seems to be closed for now...",
-                image: "images/pokemon/viridian-city.png",
+            "mountain-exploration": {
+                title: "Mountain Peak",
+                text: "You climb to the very top of Mt. Moon! The view is breathtaking - you can see the entire region! Eevee howls happily at the summit. You feel on top of the world. A rare Dragonite flies by and seems to nod at you in respect. You're ready for any challenge!",
+                image: "images/pokemon/mountain-exploration.png",
                 decisions: [
-                    { text: "Head to the next city", nextNode: "pewter-gym" },
-                    { text: "Train in the nearby areas", nextNode: "training-montage" }
+                    { text: "Descend and head to the Pokemon League", nextNode: "pokemon-league" }
                 ]
             },
-            "water-cave": {
-                title: "The Water Cave",
-                text: "Deep in the cave, you discover amazing Water-type Pokemon! You even encounter a powerful legendary Pokemon. Though you can't catch it yet, it seems to acknowledge your potential as a trainer. You feel inspired!",
-                image: "images/pokemon/water-cave.png",
+            "mountain-training": {
+                title: "Mountain Training",
+                text: "You train Eevee and Charmander on the mountainside! The tough terrain makes them stronger. Charmander's flame burns brighter, and Eevee becomes faster and more agile. They've become great partners. You feel ready to take on the Pokemon League!",
+                image: "images/pokemon/mountain-training.png",
                 decisions: [
-                    { text: "Continue your journey with renewed determination", nextNode: "pokemon-league-path" }
+                    { text: "Challenge the Pokemon League", nextNode: "pokemon-league" }
                 ]
             },
-            "secret-garden": {
-                title: "The Secret Garden",
-                text: "You discover the secret garden! It's full of rare Grass-type Pokemon and beautiful flowers. You catch some amazing Pokemon and learn about the harmony between Pokemon and nature. This experience will stay with you forever!",
-                image: "images/pokemon/secret-garden.png",
+            "team-rocket-battle": {
+                title: "Defeating Team Rocket!",
+                text: "You bravely confront Team Rocket! 'Prepare for trouble!' they shout, but you're not scared. Eevee leaps into battle and defeats their Koffing and Ekans! Team Rocket blasts off, and everyone in the cave cheers! You're a hero! The scientist rewards you with a special fossil Pokemon!",
+                image: "images/pokemon/team-rocket-battle.png",
                 decisions: [
-                    { text: "Continue your Pokemon adventure", nextNode: "pokemon-league-path" }
+                    { text: "Continue as a Pokemon hero", nextNode: "pokemon-league" }
                 ]
             },
-            "celadon-gym": {
-                title: "Celadon City Gym",
-                text: "You challenge Erika, the Grass-type Gym Leader! The battle is beautiful and intense. Your Pokemon work together perfectly, and you win the Rainbow Badge! Erika is impressed by your connection with your Pokemon.",
-                image: "images/pokemon/celadon-gym.png",
+            "fossil-revival": {
+                title: "Fossil Revival",
+                text: "The scientist revives your fossil into an Omanyte! The ancient Pokemon seems confused at first but quickly bonds with Eevee. You now have a rare and amazing Pokemon on your team! The scientist tells you about the Pokemon League and encourages you to enter.",
+                image: "images/pokemon/fossil-revival.png",
                 decisions: [
-                    { text: "Keep collecting badges", nextNode: "pokemon-league-path" }
+                    { text: "Head to the Pokemon League", nextNode: "pokemon-league" }
                 ]
             },
-            "pokemon-league-path": {
-                title: "The Road to Victory",
-                text: "You've collected all eight Gym Badges and trained your Pokemon to be the best they can be! Victory Road awaits, and beyond it, the Pokemon League. You're about to face the Elite Four and the Champion!",
-                image: "images/pokemon/pokemon-league-path.png",
+            "gym-challenge": {
+                title: "The Gym Challenge",
+                text: "You travel across the region, challenging gym after gym! Eevee is always by your side, growing stronger with each battle. You earn badge after badge - Boulder, Cascade, Thunder, Rainbow, Soul, Marsh, Volcano, and Earth! You now have all eight badges. The Pokemon League awaits!",
+                image: "images/pokemon/gym-challenge.png",
                 decisions: [
-                    { text: "Challenge the Elite Four", nextNode: "elite-four" }
+                    { text: "Enter the Pokemon League", nextNode: "pokemon-league" }
+                ]
+            },
+            "pokemon-league": {
+                title: "The Pokemon League",
+                text: "You've made it to the Pokemon League! Victory Road was tough, but you and Eevee conquered it together. Now you stand at the entrance to the Elite Four's chambers. Eevee looks at you with determination in its eyes. You've trained hard for this moment. It's time to become the Champion!",
+                image: "images/pokemon/pokemon-league.png",
+                decisions: [
+                    { text: "Challenge the Elite Four!", nextNode: "elite-four" }
                 ]
             },
             "elite-four": {
                 title: "The Elite Four!",
-                text: "You battle through the Elite Four one by one! Each battle is more intense than the last. Your Pokemon give everything they have, and together you overcome every challenge. Finally, you face the Champion...",
+                text: "You battle through Lorelei's Ice-types, Bruno's Fighting-types, Agatha's Ghost-types, and Lance's Dragon-types! Each battle is more intense than the last. Eevee fights with everything it has, and together you overcome every challenge. Finally, you face the Champion's door...",
                 image: "images/pokemon/elite-four.png",
                 decisions: [
-                    { text: "Battle the Champion", nextNode: "champion-battle" }
+                    { text: "Face the Champion!", nextNode: "champion-battle" }
                 ]
             },
             "champion-battle": {
                 title: "Pokemon Champion!",
-                text: "In an epic final battle, you defeat the Champion! Your Pokemon celebrate with you as you're crowned the new Pokemon Champion! Professor Oak arrives to congratulate you. Your Pokemon journey has been incredible, and now you've achieved your dream!",
+                text: "The final battle is legendary! The Champion's Pokemon are incredibly strong, but the bond between you and Eevee is unbreakable. In the final moment, Eevee uses all its power and wins! Confetti falls as you're crowned the new Pokemon Champion! Professor Oak rushes in to congratulate you. 'I knew you were special from the moment I gave you Eevee,' he says with tears of joy. You did it!",
                 image: "images/pokemon/champion-battle.png",
                 decisions: [
-                    { text: "Receive your Champion's reward", nextNode: "gift-reveal" }
+                    { text: "Receive your Champion's reward!", nextNode: "gift-reveal" }
                 ]
             },
             "gift-reveal": {
                 type: "gift-reveal",
                 title: "A Champion's Reward!",
-                text: "Congratulations, Pokemon Champion! Your incredible journey through the Pokemon world has been amazing! You've caught Pokemon, won badges, defeated the Elite Four, and become Champion! Now, you must choose your ultimate reward - a pass to an amazing place where adventures never end!",
+                text: "Congratulations, Pokemon Champion! Your incredible journey with Eevee has been amazing! You've caught Pokemon, made friends, defeated Team Rocket, won all eight badges, conquered the Elite Four, and become Champion! Now, you must choose your ultimate reward - a pass to an amazing place where real adventures await!",
                 image: "images/pokemon/gift-reveal.png"
             },
             "final-gift": {
