@@ -234,6 +234,8 @@ body {
     font-size: 3em;
     margin-bottom: 30px;
     color: #2c3e50;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .gift-reveal .gift-image {
@@ -331,6 +333,8 @@ body {
     margin-bottom: 30px;
     color: #2c3e50;
     animation: bounce 1s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Theme-specific final gift reveal colors */
@@ -425,6 +429,31 @@ body {
     
     .image-placeholder {
         min-height: 150px;
+    }
+    
+    .gift-reveal h1 {
+        font-size: 1.8em;
+    }
+    
+    .gift-reveal .gift-description {
+        font-size: 1.1em;
+    }
+    
+    .final-gift-reveal h1 {
+        font-size: 2em;
+    }
+    
+    .final-gift-reveal .gift-name {
+        font-size: 1.8em;
+    }
+    
+    .final-gift-reveal .gift-message {
+        font-size: 1.1em;
+    }
+    
+    .gift-option {
+        font-size: 1em;
+        padding: 20px;
     }
 }
 
