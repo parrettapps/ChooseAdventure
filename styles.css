@@ -321,6 +321,11 @@ body {
     padding: 60px 40px;
 }
 
+.start-over-button {
+    margin-top: 40px;
+    text-align: center;
+}
+
 .final-gift-reveal h1 {
     font-size: 3.5em;
     margin-bottom: 30px;

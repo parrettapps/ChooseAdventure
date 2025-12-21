@@ -134,6 +134,7 @@ const router = {
         html += `<div class="gift-message">${park.message}</div>`;
         html += `<div class="image-wrapper"><img src="${park.image}" alt="${park.name} Annual Pass" class="story-image gift-pass-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                  <div class="image-placeholder" style="display:none;">📷 ${park.name} Annual Pass Image</div></div>`;
+        html += `<button class="decision-button start-over-button" onclick="router.startOver('${theme}')">🔄 Start Your Adventure Again!</button>`;
         html += '</div>';
         
         container.innerHTML = html;
@@ -159,6 +160,15 @@ const router = {
         setTimeout(() => {
             this.loadStory(theme, 'final-gift');
         }, 1000);
+    },
+    
+    startOver: function(theme) {
+        // Clear the selected park for this theme
+        localStorage.removeItem(`selectedPark_${theme}`);
+        // Go back to the start of the same story
+        this.loadStory(theme, 'start');
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 };
 
