@@ -121,9 +121,9 @@ const router = {
     renderFinalGift: function(node, theme, container) {
         const selectedPark = localStorage.getItem(`selectedPark_${theme}`);
         const parks = {
-            'universal': { name: 'Universal Studios', message: 'Get ready for incredible adventures at Universal Studios! From The Wizarding World of Harry Potter to thrilling roller coasters, your annual pass unlocks endless fun!' },
-            'disney': { name: 'Disney', message: 'Welcome to the most magical place on Earth! Your Disney annual pass gives you unlimited access to create memories that will last a lifetime!' },
-            'busch': { name: 'Busch Gardens', message: 'Your Busch Gardens annual pass is your ticket to endless adventures, amazing roller coasters, and unforgettable family fun!' }
+            'universal': { name: 'Universal Studios', image: 'images/gifts/universal.png', message: 'Get ready for incredible adventures at Universal Studios! From The Wizarding World of Harry Potter to thrilling roller coasters, your annual pass unlocks endless fun!' },
+            'disney': { name: 'Disney', image: 'images/gifts/disney.png', message: 'Welcome to the most magical place on Earth! Your Disney annual pass gives you unlimited access to create memories that will last a lifetime!' },
+            'busch': { name: 'Busch Gardens', image: 'images/gifts/busch.png', message: 'Your Busch Gardens annual pass is your ticket to endless adventures, amazing roller coasters, and unforgettable family fun!' }
         };
         
         const park = parks[selectedPark] || parks['disney'];
@@ -132,7 +132,8 @@ const router = {
         html += `<h1>🎁 Your Gift Awaits! 🎁</h1>`;
         html += `<div class="gift-name">${park.name} Annual Pass</div>`;
         html += `<div class="gift-message">${park.message}</div>`;
-        html += `<div class="gift-image">📷 ${park.name} Annual Pass Image Placeholder</div>`;
+        html += `<div class="image-wrapper"><img src="${park.image}" alt="${park.name} Annual Pass" class="story-image gift-pass-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                 <div class="image-placeholder" style="display:none;">📷 ${park.name} Annual Pass Image</div></div>`;
         html += '</div>';
         
         container.innerHTML = html;

@@ -34,11 +34,17 @@ Image placeholders are included throughout the stories. To add your custom image
 2. Create subfolders for each theme:
    - `images/starwars/`
    - `images/harrypotter/`
-   - `images/minecraft/`
+   - `images/pokemon/`
+   - `images/gifts/` (for annual pass images)
 3. Add images with the following naming convention (as referenced in `stories.js`):
    - `start.png` or `start.jpg` - Opening scene (both .png and .jpg are supported)
    - `[node-name].png` or `[node-name].jpg` - Each story node has an image reference
    - `gift-reveal.png` or `gift-reveal.jpg` - The gift selection page
+
+4. **Annual Pass Images** (in `images/gifts/`):
+   - `universal.png` - Universal Studios Annual Pass image
+   - `disney.png` - Disney Annual Pass image
+   - `busch.png` - Busch Gardens Annual Pass image
    
    **Note:** Both .png and .jpg image formats are fully supported throughout the application.
 
