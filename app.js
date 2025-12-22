@@ -22,6 +22,25 @@ const router = {
         this.loadStory(theme, 'start');
     },
     
+    // Check if name should trigger the Easter egg
+    shouldRickroll: function(name) {
+        if (!name) return false;
+        const lowerName = name.toLowerCase().trim();
+        
+        // Exact matches (case insensitive)
+        const exactMatches = ['buttercreep', 'bc', 'cj', 'cjp'];
+        if (exactMatches.includes(lowerName)) {
+            return true;
+        }
+        
+        // Contains "chris" anywhere in the name
+        if (lowerName.includes('chris')) {
+            return true;
+        }
+        
+        return false;
+    },
+    
     loadStory: function(theme, nodeId) {
         if (!stories || !stories[theme]) {
             console.error('Story theme not found:', theme);
@@ -34,8 +53,57 @@ const router = {
             return;
         }
         
+        // For Pokemon, check if we need to get trainer name first
+        if (theme === 'pokemon' && nodeId === 'start' && !localStorage.getItem('pokemonTrainerName')) {
+            this.renderNameEntry(theme);
+            return;
+        }
+        
         const node = story.nodes[nodeId];
         this.renderNode(node, theme);
+    },
+    
+    renderNameEntry: function(theme) {
+        const container = document.getElementById('story-container');
+        
+        let html = '<div class="name-entry">';
+        html += '<h1 class="story-title">🔬 Professor Oak\'s Lab 🔬</h1>';
+        html += '<div class="image-wrapper"><div class="image-placeholder" style="background: linear-gradient(135deg, #fff9e6 0%, #ffe066 100%); color: #cc0000;">🧪 Professor Oak</div></div>';
+        html += '<div class="story-text">"Welcome to the world of Pokemon! I\'m Professor Oak. Before we begin your adventure, I need to register you as an official Pokemon Trainer!"</div>';
+        html += '<div class="story-text"><strong>"Tell me, what is your name?"</strong></div>';
+        html += '<div class="name-input-container">';
+        html += '<input type="text" id="trainer-name-input" class="trainer-name-input" placeholder="Enter your name..." maxlength="20" autocomplete="off">';
+        html += '<button class="decision-button" onclick="router.submitTrainerName()">That\'s my name!</button>';
+        html += '</div>';
+        html += '</div>';
+        
+        container.innerHTML = html;
+        
+        // Focus on input and allow Enter key to submit
+        const input = document.getElementById('trainer-name-input');
+        input.focus();
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                router.submitTrainerName();
+            }
+        });
+    },
+    
+    submitTrainerName: function() {
+        const input = document.getElementById('trainer-name-input');
+        const name = input.value.trim();
+        
+        if (!name) {
+            input.style.border = '3px solid #cc0000';
+            input.placeholder = 'Please enter a name!';
+            return;
+        }
+        
+        // Store the trainer name
+        localStorage.setItem('pokemonTrainerName', name);
+        
+        // Now load the actual start
+        this.loadStory('pokemon', 'start');
     },
     
     renderNode: function(node, theme) {
@@ -86,6 +154,15 @@ const router = {
     },
     
     renderGiftReveal: function(node, theme, container) {
+        // Check for Pokemon Easter egg
+        if (theme === 'pokemon') {
+            const trainerName = localStorage.getItem('pokemonTrainerName');
+            if (this.shouldRickroll(trainerName)) {
+                this.renderRickrollGiftReveal(node, theme, container, trainerName);
+                return;
+            }
+        }
+        
         let html = '<div class="gift-reveal">';
         html += `<h1>${node.title}</h1>`;
         
@@ -116,6 +193,58 @@ const router = {
         
         html += '</div></div>';
         container.innerHTML = html;
+    },
+    
+    renderRickrollGiftReveal: function(node, theme, container, trainerName) {
+        let html = '<div class="gift-reveal rickroll-reveal">';
+        html += `<h1>🎉 Congratulations, ${trainerName}! 🎉</h1>`;
+        html += '<div class="gift-description" style="margin-bottom: 20px;">You\'ve earned a <strong>SUPER SPECIAL</strong> Champion\'s reward!</div>';
+        html += '<div class="rickroll-notice">🔊 <strong>TURN YOUR VOLUME UP</strong> for the full experience! 🔊</div>';
+        html += '<div class="rickroll-container">';
+        html += '<iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" title="Special Reward" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        html += '</div>';
+        html += '<div class="gift-description" style="margin-top: 30px;">Just kidding! 😂 Click below to see your <em>real</em> gift!</div>';
+        html += `<button class="decision-button" onclick="router.showRealGiftReveal('${theme}')" style="margin-top: 20px;">🎁 Show Me My REAL Gift!</button>`;
+        html += '</div>';
+        
+        container.innerHTML = html;
+    },
+    
+    showRealGiftReveal: function(theme) {
+        const container = document.getElementById('story-container');
+        const node = stories[theme].nodes['gift-reveal'];
+        
+        let html = '<div class="gift-reveal">';
+        html += `<h1>${node.title}</h1>`;
+        
+        if (node.image) {
+            html += `<img src="${node.image}" alt="Gift" class="gift-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                     <div class="gift-image" style="display:none; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">📷 Gift Image Placeholder</div>`;
+        } else {
+            html += '<div class="gift-image" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">📷 Gift Image Placeholder</div>';
+        }
+        
+        if (node.text) {
+            html += `<div class="gift-description">${node.text}</div>`;
+        }
+        
+        html += '<div class="gift-options">';
+        const parks = [
+            { id: 'universal', name: 'Universal Studios', description: 'Experience the magic of Universal Studios with an annual pass!' },
+            { id: 'disney', name: 'Disney', description: 'The most magical place on Earth awaits with your Disney annual pass!' },
+            { id: 'busch', name: 'Busch Gardens', description: 'Adventure and thrills await with your Busch Gardens annual pass!' }
+        ];
+        
+        parks.forEach(park => {
+            html += `<div class="gift-option" onclick="router.selectGift('${theme}', '${park.id}', this)">
+                        <strong>${park.name}</strong><br>
+                        <small>${park.description}</small>
+                     </div>`;
+        });
+        
+        html += '</div></div>';
+        container.innerHTML = html;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     
     renderFinalGift: function(node, theme, container) {
@@ -165,6 +294,10 @@ const router = {
     startOver: function(theme) {
         // Clear the selected park for this theme
         localStorage.removeItem(`selectedPark_${theme}`);
+        // For Pokemon, also clear the trainer name so they can enter again
+        if (theme === 'pokemon') {
+            localStorage.removeItem('pokemonTrainerName');
+        }
         // Go back to the start of the same story
         this.loadStory(theme, 'start');
         // Scroll to top

@@ -455,5 +455,87 @@ body {
         font-size: 1em;
         padding: 20px;
     }
+    
+    .trainer-name-input {
+        font-size: 1em;
+        padding: 12px 15px;
+    }
+    
+    .rickroll-notice {
+        font-size: 1em;
+        padding: 15px;
+    }
+}
+
+/* Pokemon Name Entry */
+.name-entry {
+    text-align: center;
+}
+
+.name-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.trainer-name-input {
+    font-size: 1.2em;
+    padding: 15px 20px;
+    border: 3px solid #ffcb05;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    font-family: 'Georgia', serif;
+    background: #fff;
+    color: #333;
+}
+
+.trainer-name-input:focus {
+    outline: none;
+    border-color: #cc0000;
+    box-shadow: 0 0 10px rgba(204, 0, 0, 0.3);
+}
+
+.pokemon .trainer-name-input {
+    border-color: #ffcb05;
+}
+
+/* Rickroll Easter Egg */
+.rickroll-reveal {
+    text-align: center;
+}
+
+.rickroll-notice {
+    background: linear-gradient(135deg, #cc0000 0%, #ff4444 100%);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.3em;
+    margin: 20px 0;
+    animation: pulse-notice 1s ease infinite;
+}
+
+@keyframes pulse-notice {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.rickroll-container {
+    margin: 20px auto;
+    max-width: 560px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.rickroll-container iframe {
+    display: block;
 }
 
