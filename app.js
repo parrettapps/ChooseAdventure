@@ -206,7 +206,7 @@ const router = {
         html += '<h1 class="congrats-title">🎉 Congrats! 🎉</h1>';
         html += `<h2 class="congrats-name">${trainerName}</h2>`;
         html += '<div class="gift-description" style="margin-bottom: 20px;">You\'ve earned a <strong>SUPER SPECIAL</strong> Champion\'s reward!</div>';
-        html += '<div class="rickroll-notice">🔊 <strong>TURN YOUR VOLUME ALL THE WAY UP</strong> 🔊</div>';
+        html += '<div class="rickroll-notice">🔊 <strong>TURN YOUR VOLUME UP BEFORE PROCEEDING.</strong> 🔊</div>';
         html += '<div class="gift-description" style="margin-top: 20px;">Your exclusive video reward is ready!</div>';
         html += `<button class="decision-button rickroll-button" id="reveal-button">🎬 Watch My Special Reward!</button>`;
         html += '</div>';
