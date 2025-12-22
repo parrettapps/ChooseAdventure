@@ -70,7 +70,7 @@ const router = {
         
         let html = '<div class="name-entry">';
         html += '<h1 class="story-title">🔬 Professor Oak\'s Lab 🔬</h1>';
-        html += '<div class="image-wrapper"><div class="image-placeholder" style="background: linear-gradient(135deg, #fff9e6 0%, #ffe066 100%); color: #cc0000;">🧪 Professor Oak</div></div>';
+        html += '<div class="image-wrapper"><img src="images/pokemon/professor-oak.png" alt="Professor Oak" class="story-image" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';"><div class="image-placeholder" style="display:none;">🧪 Professor Oak</div></div>';
         html += '<div class="story-text">"Welcome to the world of Pokemon! I\'m Professor Oak. Before we begin your adventure, I need to register you as an official Pokemon Trainer!"</div>';
         html += '<div class="story-text"><strong>"Tell me, what is your name?"</strong></div>';
         html += '<div class="name-input-container">';
