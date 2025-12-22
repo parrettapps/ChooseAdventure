@@ -53,8 +53,10 @@ const router = {
             return;
         }
         
-        // For Pokemon, check if we need to get trainer name first
-        if (theme === 'pokemon' && nodeId === 'start' && !localStorage.getItem('pokemonTrainerName')) {
+        // For Pokemon, always ask for trainer name when starting
+        if (theme === 'pokemon' && nodeId === 'start') {
+            // Clear any previously stored name so it asks every time
+            localStorage.removeItem('pokemonTrainerName');
             this.renderNameEntry(theme);
             return;
         }
@@ -102,8 +104,12 @@ const router = {
         // Store the trainer name
         localStorage.setItem('pokemonTrainerName', name);
         
-        // Now load the actual start
-        this.loadStory('pokemon', 'start');
+        // Now load the actual start node (bypassing the name entry check)
+        const story = stories['pokemon'];
+        if (story && story.nodes && story.nodes['start']) {
+            const node = story.nodes['start'];
+            this.renderNode(node, 'pokemon');
+        }
     },
     
     renderNode: function(node, theme) {
