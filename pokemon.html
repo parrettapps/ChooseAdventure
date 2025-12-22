@@ -19,7 +19,18 @@
     </script>
     <script src="stories.js"></script>
     <script src="app.js"></script>
+    <!-- Load the YouTube IFrame Player API code asynchronously -->
     <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        function onYouTubeIframeAPIReady() {
+            // YouTube API is ready - player will be initialized when needed
+            window.rickrollPlayerReady = true;
+        }
+        
         // Load story for this specific theme
         function initStory() {
             document.body.className = 'pokemon';

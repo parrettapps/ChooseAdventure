@@ -196,30 +196,109 @@ const router = {
     },
     
     renderRickrollGiftReveal: function(node, theme, container, trainerName) {
-        let html = '<div class="gift-reveal rickroll-reveal">';
-        html += `<h1 class="congrats-title">🎉 Congrats, ${trainerName}! 🎉</h1>`;
+        let html = '<div class="gift-reveal rickroll-reveal" id="reward-container">';
+        html += '<h1 class="congrats-title">🎉 Congrats! 🎉</h1>';
+        html += `<h2 class="congrats-name">${trainerName}</h2>`;
         html += '<div class="gift-description" style="margin-bottom: 20px;">You\'ve earned a <strong>SUPER SPECIAL</strong> Champion\'s reward!</div>';
         html += '<div class="rickroll-notice">🔊 <strong>TURN YOUR VOLUME ALL THE WAY UP</strong> 🔊</div>';
         html += '<div class="gift-description" style="margin-top: 20px;">Your exclusive video reward is ready!</div>';
-        html += `<button class="decision-button rickroll-button" onclick="router.triggerRickroll('${theme}')">🎬 Watch My Special Reward!</button>`;
+        html += `<button class="decision-button rickroll-button" id="reveal-button">🎬 Watch My Special Reward!</button>`;
+        html += '</div>';
+        html += '<div id="video-wrapper" style="display:none;">';
+        html += '<h1>🎁 Your Special Reward! 🎁</h1>';
+        html += '<div id="player"></div>';
+        html += '<div id="joke-message" style="display:none; margin-top: 30px;">';
+        html += '<div class="gift-description">Just kidding! 😂 Click below to see your <em>real</em> gift!</div>';
+        html += `<button class="decision-button" onclick="router.showRealGiftReveal('${theme}')" style="margin-top: 20px;">🎁 Show Me My REAL Gift!</button>`;
+        html += '</div>';
         html += '</div>';
         
         container.innerHTML = html;
+        
+        // Initialize YouTube player when container is ready
+        this.initRickrollPlayer();
+        
+        // Set up the button click handler
+        const btn = document.getElementById('reveal-button');
+        if (btn) {
+            btn.addEventListener('click', function() {
+                router.triggerRickroll(theme);
+            });
+        }
+    },
+    
+    initRickrollPlayer: function() {
+        // Wait for YouTube API to be ready
+        if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+            // Wait a bit and try again
+            setTimeout(() => {
+                this.initRickrollPlayer();
+            }, 100);
+            return;
+        }
+        
+        const playerDiv = document.getElementById('player');
+        if (playerDiv && !window.rickrollPlayer) {
+            window.rickrollPlayer = new YT.Player('player', {
+                height: '315',
+                width: '100%',
+                videoId: 'dQw4w9WgXcQ', // The Rickroll ID
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 1,
+                    'rel': 0
+                },
+                events: {
+                    'onReady': function(event) {
+                        // Player is ready
+                        console.log('Rickroll player ready');
+                    }
+                }
+            });
+        }
     },
     
     triggerRickroll: function(theme) {
-        const container = document.getElementById('story-container');
+        const container = document.getElementById('reward-container');
+        const wrapper = document.getElementById('video-wrapper');
+        const jokeMessage = document.getElementById('joke-message');
         
-        let html = '<div class="gift-reveal rickroll-playing">';
-        html += '<h1>🎁 Your Special Reward! 🎁</h1>';
-        html += '<div class="rickroll-container">';
-        html += '<iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" title="Special Reward" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-        html += '</div>';
-        html += '<div class="gift-description" style="margin-top: 30px;">Just kidding! 😂 Click below to see your <em>real</em> gift!</div>';
-        html += `<button class="decision-button" onclick="router.showRealGiftReveal('${theme}')" style="margin-top: 20px;">🎁 Show Me My REAL Gift!</button>`;
-        html += '</div>';
+        if (!container || !wrapper) {
+            console.error('Rickroll elements not found');
+            return;
+        }
         
-        container.innerHTML = html;
+        // Hide the text and button
+        container.style.display = 'none';
+        // Show the video wrapper
+        wrapper.style.display = 'block';
+        
+        // Ensure player is initialized
+        if (!window.rickrollPlayer) {
+            this.initRickrollPlayer();
+        }
+        
+        // Play the video with sound using YouTube API
+        const playVideo = () => {
+            if (window.rickrollPlayer && typeof window.rickrollPlayer.playVideo === 'function') {
+                window.rickrollPlayer.playVideo();
+            } else {
+                // If player isn't ready yet, wait a bit and try again
+                setTimeout(playVideo, 200);
+            }
+        };
+        
+        // Try to play immediately, or wait for player to be ready
+        playVideo();
+        
+        // Show the "Just kidding" message after 10 seconds
+        setTimeout(() => {
+            if (jokeMessage) {
+                jokeMessage.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }, 10000);
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     
