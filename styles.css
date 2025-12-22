@@ -504,8 +504,14 @@ body {
 }
 
 /* Rickroll Easter Egg */
-.rickroll-reveal {
+.rickroll-reveal,
+.rickroll-playing {
     text-align: center;
+}
+
+.congrats-title {
+    font-size: 1.8em;
+    white-space: nowrap;
 }
 
 .rickroll-notice {
@@ -527,6 +533,24 @@ body {
     }
 }
 
+.rickroll-button {
+    font-size: 1.3em;
+    padding: 20px 40px;
+    margin-top: 20px;
+    animation: pulse-button 1.5s ease infinite;
+}
+
+@keyframes pulse-button {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(204, 0, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 30px rgba(204, 0, 0, 0.6);
+    }
+}
+
 .rickroll-container {
     margin: 20px auto;
     max-width: 560px;
@@ -537,5 +561,21 @@ body {
 
 .rickroll-container iframe {
     display: block;
+}
+
+@media (max-width: 480px) {
+    .congrats-title {
+        font-size: 1.4em;
+    }
+    
+    .rickroll-notice {
+        font-size: 1em;
+        padding: 15px;
+    }
+    
+    .rickroll-button {
+        font-size: 1.1em;
+        padding: 15px 25px;
+    }
 }
 

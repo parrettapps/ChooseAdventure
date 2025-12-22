@@ -197,9 +197,21 @@ const router = {
     
     renderRickrollGiftReveal: function(node, theme, container, trainerName) {
         let html = '<div class="gift-reveal rickroll-reveal">';
-        html += `<h1>🎉 Congratulations, ${trainerName}! 🎉</h1>`;
+        html += `<h1 class="congrats-title">🎉 Congrats, ${trainerName}! 🎉</h1>`;
         html += '<div class="gift-description" style="margin-bottom: 20px;">You\'ve earned a <strong>SUPER SPECIAL</strong> Champion\'s reward!</div>';
-        html += '<div class="rickroll-notice">🔊 <strong>TURN YOUR VOLUME UP</strong> for the full experience! 🔊</div>';
+        html += '<div class="rickroll-notice">🔊 <strong>TURN YOUR VOLUME ALL THE WAY UP</strong> 🔊</div>';
+        html += '<div class="gift-description" style="margin-top: 20px;">Your exclusive video reward is ready!</div>';
+        html += `<button class="decision-button rickroll-button" onclick="router.triggerRickroll('${theme}')">🎬 Watch My Special Reward!</button>`;
+        html += '</div>';
+        
+        container.innerHTML = html;
+    },
+    
+    triggerRickroll: function(theme) {
+        const container = document.getElementById('story-container');
+        
+        let html = '<div class="gift-reveal rickroll-playing">';
+        html += '<h1>🎁 Your Special Reward! 🎁</h1>';
         html += '<div class="rickroll-container">';
         html += '<iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" title="Special Reward" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         html += '</div>';
@@ -208,6 +220,7 @@ const router = {
         html += '</div>';
         
         container.innerHTML = html;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     },
     
     showRealGiftReveal: function(theme) {
